@@ -1,0 +1,38 @@
+﻿@model IEnumerable<personapi_dotnet.Models.Entities.Estudios>
+
+@{
+    ViewData["Title"] = "Listado de Estudios";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Estudios")" class="btn btn-primary">Crear Nuevo Estudio</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Profesión</th>
+            <th>Persona</th>
+            <th>Fecha</th>
+            <th>Universidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estudio in Model)
+        {
+            <tr>
+                <td>@estudio.IdProfNavigation.Nom</td>
+                <td>@estudio.CcPerNavigation.Nombre @estudio.CcPerNavigation.Apellido</td>
+                <td>@estudio.Fecha?.ToString("yyyy-MM-dd")</td>
+                <td>@estudio.Univer</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Estudios", new { id_prof = estudio.IdProf, cc_per = estudio.CcPer })" class="btn btn-warning">Editar</a>
+                    <a href="@Url.Action("Delete", "Estudios", new { id_prof = estudio.IdProf, cc_per = estudio.CcPer })" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

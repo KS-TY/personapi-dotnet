@@ -1,0 +1,34 @@
+﻿@model personapi_dotnet.Models.Entities.Persona
+
+@{
+    ViewData["Title"] = "Eliminar Persona";
+}
+
+<h2>Eliminar Persona</h2>
+
+<h4>¿Estás seguro que deseas eliminar esta persona?</h4>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">CC</dt>
+        <dd class="col-sm-10">@Model.Cc</dd>
+
+        <dt class="col-sm-2">Nombre</dt>
+        <dd class="col-sm-10">@Model.Nombre</dd>
+
+        <dt class="col-sm-2">Apellido</dt>
+        <dd class="col-sm-10">@Model.Apellido</dd>
+
+        <dt class="col-sm-2">Género</dt>
+        <dd class="col-sm-10">@Model.Genero</dd>
+
+        <dt class="col-sm-2">Edad</dt>
+        <dd class="col-sm-10">@Model.Edad</dd>
+    </dl>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post" asp-route-id="@Model.Cc">
+    <input type="hidden" asp-for="Cc" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

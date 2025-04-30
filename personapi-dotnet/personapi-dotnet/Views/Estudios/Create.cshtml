@@ -1,0 +1,76 @@
+﻿@model personapi_dotnet.Models.Entities.Estudios
+
+@{
+    ViewData["Title"] = "Crear Estudio";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Mostrar errores de validación generales -->
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <strong>Hay algunos errores en el formulario:</strong>
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="IdProf">Profesión</label>
+        <select asp-for="IdProf" class="form-control">
+            <option value="">Selecciona una profesión</option>
+            @if (ViewBag.Profesiones is SelectList profesiones)
+            {
+                foreach (var item in profesiones)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            }
+            else
+            {
+                <option value="">No hay profesiones disponibles</option>
+            }
+        </select>
+        <span asp-validation-for="IdProf" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CcPer">Persona</label>
+        <select asp-for="CcPer" class="form-control">
+            <option value="">Selecciona una persona</option>
+            @if (ViewBag.Personas is SelectList personas)
+            {
+                foreach (var item in personas)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            }
+            else
+            {
+                <option value="">No hay personas disponibles</option>
+            }
+        </select>
+        <span asp-validation-for="CcPer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Fecha"></label>
+        <input asp-for="Fecha" class="form-control" type="date" />
+        <span asp-validation-for="Fecha" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Univer"></label>
+        <input asp-for="Univer" class="form-control" />
+        <span asp-validation-for="Univer" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

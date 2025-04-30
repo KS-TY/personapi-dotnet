@@ -1,0 +1,59 @@
+﻿@model personapi_dotnet.Models.Entities.Telefono
+
+@{
+    ViewData["Title"] = "Crear Teléfono";
+}
+
+<h2>Crear Teléfono</h2>
+
+<!-- Mostrar errores de validación generales -->
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <strong>Hay algunos errores en el formulario:</strong>
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Num"></label>
+        <input asp-for="Num" class="form-control" />
+        <span asp-validation-for="Num" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Oper"></label>
+        <input asp-for="Oper" class="form-control" />
+        <span asp-validation-for="Oper" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Duenio"></label>
+        <select asp-for="Duenio" class="form-control">
+            <option value="">Selecciona el dueño</option>
+            @if (ViewBag.Personas != null)
+            {
+                var personas = ViewBag.Personas as SelectList;
+                if (personas != null)
+                {
+                    foreach (var item in personas)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            }
+            else
+            {
+                <option value="">No hay personas disponibles</option>
+            }
+        </select>
+        <span asp-validation-for="Duenio" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
+        

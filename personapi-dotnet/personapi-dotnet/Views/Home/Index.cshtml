@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="container text-center">
+    <h1>Bienvenido al Sistema de Gestión</h1>
+    <p>Selecciona una de las opciones a continuación para gestionar los datos.</p>
+
+    <div class="row mt-4">
+        <!-- Enlace a la vista de Personas -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Personas</h5>
+                    <p class="card-text">Gestiona las personas registradas.</p>
+                    <a href="@Url.Action("Index", "Persona")" class="btn btn-primary">Ir a Personas</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enlace a la vista de Profesiones -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Profesiones</h5>
+                    <p class="card-text">Gestiona las profesiones disponibles.</p>
+                    <a href="@Url.Action("Index", "profesiones")" class="btn btn-primary">Ir a Profesiones</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enlace a la vista de Estudios -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Estudios</h5>
+                    <p class="card-text">Gestiona los estudios realizados.</p>
+                    <a href="@Url.Action("Index", "Estudios")" class="btn btn-primary">Ir a Estudios</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enlace a la vista de Teléfonos -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Teléfonos</h5>
+                    <p class="card-text">Gestiona los teléfonos registrados.</p>
+                    <a href="@Url.Action("Index", "Telefonos")" class="btn btn-primary">Ir a Teléfonos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Aquí puedes agregar scripts adicionales si es necesario
+    </script>
+}
