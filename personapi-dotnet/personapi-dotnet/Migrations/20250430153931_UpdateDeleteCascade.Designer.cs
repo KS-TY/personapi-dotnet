@@ -12,7 +12,7 @@ using personapi_dotnet.Models.Entities;
 namespace personapi_dotnet.Migrations
 {
     [DbContext(typeof(PersonaDbContext))]
-    [Migration("20250429234019_UpdateDeleteCascade")]
+    [Migration("20250430153931_UpdateDeleteCascade")]
     partial class UpdateDeleteCascade
     {
         /// <inheritdoc />

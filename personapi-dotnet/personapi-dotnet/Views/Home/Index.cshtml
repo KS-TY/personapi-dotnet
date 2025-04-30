@@ -2,52 +2,131 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="container text-center">
-    <h1>Bienvenido al Sistema de Gestión</h1>
-    <p>Selecciona una de las opciones a continuación para gestionar los datos.</p>
+<style>
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
 
-    <div class="row mt-4">
+    .dashboard-title {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+    }
+
+    .dashboard-subtitle {
+        color: #7f8c8d;
+        margin-bottom: 2rem;
+    }
+
+    .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+    }
+
+    .dashboard-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        width: 250px;
+        overflow: hidden;
+        border: none;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+    .card-header {
+        padding: 1.5rem 1rem 0.5rem;
+        text-align: center;
+    }
+
+    .card-body {
+        padding: 0.5rem 1.5rem 1.5rem;
+        text-align: center;
+    }
+
+    .card-title {
+        color: #2c3e50;
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .card-text {
+        color: #7f8c8d;
+        margin-bottom: 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .dashboard-btn {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+        font-weight: 500;
+    }
+
+        .dashboard-btn:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+</style>
+
+<div class="dashboard-container text-center">
+    <h1 class="dashboard-title">Bienvenido al Sistema de Gestión</h1>
+    <p class="dashboard-subtitle">Selecciona una de las opciones a continuación para gestionar los datos.</p>
+
+    <div class="card-grid">
         <!-- Enlace a la vista de Personas -->
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Personas</h5>
-                    <p class="card-text">Gestiona las personas registradas.</p>
-                    <a href="@Url.Action("Index", "Persona")" class="btn btn-primary">Ir a Personas</a>
-                </div>
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h5 class="card-title">Personas</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Gestiona las personas registradas en el sistema.</p>
+                <a href="@Url.Action("Index", "Persona")" class="dashboard-btn">Ir a Personas</a>
             </div>
         </div>
 
         <!-- Enlace a la vista de Profesiones -->
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Profesiones</h5>
-                    <p class="card-text">Gestiona las profesiones disponibles.</p>
-                    <a href="@Url.Action("Index", "profesiones")" class="btn btn-primary">Ir a Profesiones</a>
-                </div>
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h5 class="card-title">Profesiones</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Gestiona las profesiones disponibles en el sistema.</p>
+                <a href="@Url.Action("Index", "profesiones")" class="dashboard-btn">Ir a Profesiones</a>
             </div>
         </div>
 
         <!-- Enlace a la vista de Estudios -->
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Estudios</h5>
-                    <p class="card-text">Gestiona los estudios realizados.</p>
-                    <a href="@Url.Action("Index", "Estudios")" class="btn btn-primary">Ir a Estudios</a>
-                </div>
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h5 class="card-title">Estudios</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Gestiona los estudios realizados en el sistema.</p>
+                <a href="@Url.Action("Index", "Estudios")" class="dashboard-btn">Ir a Estudios</a>
             </div>
         </div>
 
         <!-- Enlace a la vista de Teléfonos -->
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Teléfonos</h5>
-                    <p class="card-text">Gestiona los teléfonos registrados.</p>
-                    <a href="@Url.Action("Index", "Telefonos")" class="btn btn-primary">Ir a Teléfonos</a>
-                </div>
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h5 class="card-title">Teléfonos</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Gestiona los teléfonos registrados en el sistema.</p>
+                <a href="@Url.Action("Index", "Telefonos")" class="dashboard-btn">Ir a Teléfonos</a>
             </div>
         </div>
     </div>

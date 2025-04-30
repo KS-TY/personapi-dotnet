@@ -1,40 +1,148 @@
 ﻿@model IEnumerable<personapi_dotnet.Models.Entities.Persona>
-
 @{
     ViewData["Title"] = "Listado de Personas";
 }
 
-<h2>Personas</h2>
+<style>
+    /* Estilos generales para mantener coherencia con el dashboard */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Crear Nueva Persona</a>
-</p>
+    .personas-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>CC</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Género</th>
-            <th>Edad</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var persona in Model)
-        {
-            <tr>
-                <td>@persona.Cc</td>
-                <td>@persona.Nombre</td>
-                <td>@persona.Apellido</td>
-                <td>@persona.Genero</td>
-                <td>@persona.Edad</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@persona.Cc" class="btn btn-sm btn-warning">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@persona.Cc" class="btn btn-sm btn-danger">Eliminar</a>
-                </td>
-            </tr>
+    .page-title {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    /* Botón principal */
+    .action-btn {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+
+        .action-btn:hover {
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
         }
-    </tbody>
-</table>
+
+    /* Estilos de la tabla */
+    .personas-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+    }
+
+        .personas-table th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .personas-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #e9ecef;
+            color: #4a5568;
+        }
+
+        .personas-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .personas-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+    /* Botones de acción */
+    .btn-small {
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.2s;
+        margin-right: 0.5rem;
+        font-weight: 500;
+    }
+
+    .btn-edit {
+        background-color: #f39c12;
+        color: white;
+    }
+
+        .btn-edit:hover {
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+        }
+
+    .btn-delete {
+        background-color: #e74c3c;
+        color: white;
+    }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<div class="personas-container">
+    <h2 class="page-title">Listado de Personas</h2>
+
+    <p>
+        <a asp-action="Create" class="action-btn">Crear Nueva Persona</a>
+    </p>
+
+    <table class="personas-table">
+        <thead>
+            <tr>
+                <th>CC</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Género</th>
+                <th>Edad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var persona in Model)
+            {
+                <tr>
+                    <td>@persona.Cc</td>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellido</td>
+                    <td>@persona.Genero</td>
+                    <td>@persona.Edad</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@persona.Cc" class="btn-small btn-edit">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@persona.Cc" class="btn-small btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
