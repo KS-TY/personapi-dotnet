@@ -63,7 +63,7 @@ Una vez que tengas los prerrequisitos instalados, sigue estos pasos para configu
     * **Paso 10.2: Añadir y aplicar la migración:**
         ```powershell
         Remove-Migration
-        Add-Migration UpdateDeleteCascade -OutputDir Data/Migrations # Ajusta 'Data/Migrations' si tus migraciones están en otra carpeta
+        Add-Migration UpdateDeleteCascade 
         Update-Database
         ```
         *(**Explicación:** `Remove-Migration` borra la última migración que no ha sido aplicada a la base de datos. `Add-Migration UpdateDeleteCascade` crea una nueva migración basada en los cambios en tu modelo de Entity Framework, nombrándola "UpdateDeleteCascade". `Update-Database` aplica las migraciones pendientes a la base de datos.)*
