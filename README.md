@@ -59,7 +59,7 @@ Una vez que tengas los prerrequisitos instalados, sigue estos pasos para configu
         ```powershell
         Drop-Database
         ```
-        *(**Nota:** Este comando eliminará la base de datos completa. Úsalo solo si necesitas empezar desde cero o si las instrucciones del taller lo indican explícitamente. Considera si este paso es *siempre* necesario o si es mejor que los usuarios creen la BD con el DDL y luego apliquen la migración inicial si existiera, o simplemente apliquen la que vas a añadir.)*
+   
     * **Paso 10.2: Añadir y aplicar la migración:**
         ```powershell
         Remove-Migration
