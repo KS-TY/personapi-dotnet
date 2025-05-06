@@ -1,0 +1,20 @@
+-- Insertar personas
+INSERT INTO persona (cc, nombre, apellido, genero, edad)
+VALUES (1010, 'Juan', 'Pérez', 'M', 30),
+       (2020, 'María', 'García', 'F', 25);
+
+-- Insertar profesiones
+INSERT INTO profesion (id, nom, des)
+VALUES (1, 'Ingeniero de Software', 'Desarrolla aplicaciones'),
+       (2, 'Médico', 'Especialista en salud humana');
+
+-- Insertar estudios
+INSERT INTO estudios (id_prof, cc_per, fecha, univer)
+VALUES (1, 1010, '2015-06-01', 'Universidad Nacional'),
+       (2, 2020, '2018-09-15', 'Universidad de los Andes');
+
+-- Insertar teléfonos
+INSERT INTO telefono (num, oper, duenio)
+VALUES ('3001234567', 'Claro', 1010),
+       ('3109876543', 'Movistar', 2020);
+
