@@ -1,74 +1,63 @@
-# Taller de Arquitectura de Software en .NET
+# Laboratorio de Arquitectura de Software en .NET
 
-Taller práctico de Arquitectura de Software utilizando .NET!
+![.NET Core](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
-Este taller fue elaborado por:
-- María Andrea Mendez
-- Juan David Castillo
-- Luis Fernando Lee
+## 📋 Requisitos Previos
 
-## Primeros pasos
+* Microsoft SQL Server 2019 instalado
+* Navegador web (Chrome, Firefox, Edge, etc.)
+* Conexión a internet para descargar los archivos necesarios
 
-Para poder participar en este taller y ejecutar el código de ejemplo, se necesitará tener configurado tu entorno de desarrollo. Sigue los pasos a continuación cuidadosamente.
+## 📥 Descarga
 
-### Prerrequisitos
+Puedes descargar los archivos necesarios desde el siguiente enlace:
 
-Asegúrate de tener instalado lo siguiente antes de comenzar con la configuración:
+[Descargar archivos del laboratorio](https://drive.google.com/drive/folders/1X2Cp9tnQlbGgD1wGOv__lV4A6vawgbsd?usp=sharing)
 
-* **Visual Studio Community 2022** - Descárgalo desde el sitio oficial de Microsoft. Asegúrate de seleccionar las cargas de trabajo de desarrollo de .NET.
-* **SDK y Runtimes de .NET** - Visual Studio generalmente instala lo necesario, pero puedes verificarlos o descargarlos por separado desde el sitio oficial de .NET.
-* **SQL Server Express (Modo Basic)** - La edición Express es gratuita y suficiente para este taller. Descárgala desde el sitio oficial de Microsoft.
-* **SQL Server Management Studio (SSMS)** - La herramienta gráfica para administrar SQL Server. Descárgala desde el sitio oficial de Microsoft.
+En este enlace encontrarás dos archivos comprimidos:
+* `personapi-dotnet-windows.zip` - Para sistemas Windows
+* `personapi-dotnet-linux.zip` - Para sistemas Linux
 
-### Pasos de Configuración y Ejecución
+Descarga el archivo correspondiente a tu sistema operativo y descomprímelo en la ubicación de tu preferencia.
 
-Una vez que tengas los prerrequisitos instalados, sigue estos pasos para configurar el proyecto y la base de datos:
+## 🛠️ Configuración de la Base de Datos
 
-1.  **Clonar o descargar el repositorio:** Obtén el código fuente de este taller en tu máquina local. Si estás en GitHub, puedes clonarlo usando `git clone <URL_DEL_REPOSITORIO>` o descargarlo como ZIP.
+1. Abre SQL Server Management Studio (SSMS) o tu cliente SQL preferido.
+2. Conéctate a tu instancia de SQL Server 2019.
+3. Abre el archivo `persona-db-ddl.txt` desde la carpeta descargada.
+4. Ejecuta el script para crear la estructura de la base de datos.
+5. (Opcional) Si deseas cargar datos de ejemplo, abre el archivo `persona-db-dml.txt` y ejecuta el script.
 
-2.  **Instalar Visual Studio:** Si aún no lo has hecho, instala **Visual Studio Community**. Durante la instalación, asegúrate de seleccionar las cargas de trabajo de desarrollo de `.NET desktop`, `ASP.NET and web development`, y `Data storage and processing`.
+## 🚀 Ejecución de la Aplicación
 
-3.  **Instalar SQL Server (Modo Basic) y SSMS:** Ejecuta los instaladores que descargaste y sigue las instrucciones para instalar **SQL Server Express** en modo básico y **SQL Server Management Studio (SSMS)**.
+### En Windows
 
-4.  **Abrir la Solución en Visual Studio:** Navega hasta la carpeta donde descargaste el código y abre el archivo de solución (`.sln`) con Visual Studio.
+1. Navega hasta la carpeta donde descomprimiste el archivo.
+2. Busca el archivo `personapi-dotnet` (sin extensión).
+3. Haz doble clic en el archivo para ejecutar la aplicación.
 
-5.  **Configurar la Conexión a la Base de Datos en Visual Studio:**
-    * Dentro de Visual Studio, abre la ventana **"SQL Server Object Explorer"**. Puedes encontrarla en el menú `View > SQL Server Object Explorer`.
-    * Haz clic en el icono de "Add SQL Server" (parece un enchufe o un cilindro con un signo más verde).
-    * En la ventana de conexión, para "Server Name", escribe `localhost\sqlexpress`.
-    * En "Authentication", selecciona `Windows Authentication` (a menos que hayas configurado SQL Server de otra manera).
-    * **Crucial:** Expande "Options >>" y en "Encrypt", selecciona `Optional`.
-    * Haz clic en "Connect". Deberías ver tu instancia de SQL Server Express en el explorador.
+### En Linux
 
-6.  **Configurar la Conexión a la Base de Datos en SSMS:**
-    * Abre **SQL Server Management Studio (SSMS)**.
-    * En la ventana de conexión, para "Server name", escribe `localhost\sqlexpress`.
-    * En "Authentication", selecciona `Windows Authentication`.
-    * **Crucial:** Haz clic en "Options >>" y en "Encryption", selecciona `Optional`.
-    * Haz clic en "Connect".
+1. Abre una terminal.
+2. Navega hasta la carpeta donde descomprimiste el archivo.
+3. Otorga permisos de ejecución al archivo:
+   ```bash
+   chmod +x personapi-dotnet
+   ```
+4. Ejecuta la aplicación:
+   ```bash
+   ./personapi-dotnet
+   ```
 
-7.  **Crear la Estructura de la Base de Datos (Ejecutar DDL):**
-    * En SSMS, una vez conectado, haz clic en "New Query".
-    * **Pega el script DDL adjunto a este taller** en la ventana de consulta. (Deberás asegurarte de que el archivo o el contenido del DDL esté accesible para los participantes, quizás en el propio repositorio).
-    * Ejecuta la consulta (presionando `F5` o haciendo clic en "Execute"). Esto creará la base de datos y sus tablas.
+## 🌐 Acceso a la Aplicación
 
-8.  **Gestionar Migraciones con Entity Framework Core (dentro de Visual Studio):**
-    * En Visual Studio, abre la **Consola del Administrador de Paquetes (Package Manager Console)**. Puedes encontrarla en el menú `Tools > NuGet Package Manager > Package Manager Console`.
-    * Asegúrate de que el "Default project" seleccionado sea el proyecto que contiene las migraciones de Entity Framework Core (generalmente es el proyecto de datos o infraestructura).
-    * **Paso 10.1: Eliminar migraciones existentes (si es necesario, usar con precaución):**
-        ```powershell
-        Drop-Database
-        ```
-   
-    * **Paso 10.2: Añadir y aplicar la migración:**
-        ```powershell
-        Remove-Migration
-        Add-Migration UpdateDeleteCascade 
-        Update-Database
-        ```
-        *(**Explicación:** `Remove-Migration` borra la última migración que no ha sido aplicada a la base de datos. `Add-Migration UpdateDeleteCascade` crea una nueva migración basada en los cambios en tu modelo de Entity Framework, nombrándola "UpdateDeleteCascade". `Update-Database` aplica las migraciones pendientes a la base de datos.)*
+Una vez que la aplicación esté en ejecución, abre tu navegador web y accede a la siguiente URL:
 
-9.  **Ejecutar la Aplicación:**
-    * Una vez completados los pasos anteriores, la base de datos estará lista y configurada.
-    * En Visual Studio, asegúrate de que el proyecto de inicio (Startup Project) sea la aplicación ejecutable (web, API, consola, etc.).
-    * Presiona `Ctrl + F5` para ejecutar la aplicación sin depurar. Esto iniciará la aplicación.
+[http://localhost:5000](http://localhost:5000)
+
+## 📝 Notas Importantes
+
+* Asegúrate de que SQL Server esté funcionando correctamente antes de ejecutar la aplicación.
+* Si encuentras algún problema de conexión, verifica que los datos de conexión en la aplicación coincidan con tu configuración de SQL Server.
+* La aplicación debe ejecutarse con permisos de administrador en algunos sistemas.
